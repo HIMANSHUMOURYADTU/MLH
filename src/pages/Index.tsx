@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <Hero onGetStarted={handleGetStarted} />
+      <Hero/>
       <Features />
       <UseCases />
       <TechStack />

@@ -11,8 +11,11 @@ import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 const queryClient = new QueryClient();
 
-// ✅ Protect Querypage only
-const ProtectedQuerypage = withAuthenticationRequired(Querypage);
+// ✅ Protect Querypage correctly
+const ProtectedQuerypage = withAuthenticationRequired(Querypage, {
+  returnTo: "/Querypage",
+  onRedirecting: () => <div>Loading...</div>,   // optional
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -27,7 +30,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
 
           {/* ✅ Protected route */}
-          <Route path="/Querypage" element={<ProtectedQuerypage />} />
+          <Route path="/Querypage" element={<Querypage />} />
 
           {/* ✅ Catch-all */}
           <Route path="*" element={<NotFound />} />
