@@ -1,0 +1,8 @@
+services:
+  - type: static
+    name: mlh-vite-static
+    env: node
+    branch: main
+    buildCommand: npm ci && npm run build
+    publishPath: dist
+    plan: free
